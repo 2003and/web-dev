@@ -1,0 +1,188 @@
+@import 'variables';
+@import 'mixins';
+
+.catalog {
+    &Title{
+        margin-bottom:20px;
+    }
+    &Grid {
+        display:grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-bottom:20px;
+        @media (max-width: 750px) {
+            grid-template-columns: 1fr 1fr;
+            margin-left: 5%;
+        }
+    }
+}
+.category {
+    &Title {
+        @include h2-title;
+
+        margin-bottom: 55px;
+        text-align: center;
+    }
+    &Grid {
+        display: grid;
+        margin-bottom: 30px;
+        gap: 12px 10px;
+        grid-template-columns: repeat(4, 1fr);
+        &Vert {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 12px 60px;
+        }
+        &Fitclub {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            @media (max-width: 750px) {
+                display: block;
+                padding:0;
+                grid-template-columns: 330px 330px;
+            }
+        }
+        @media (max-width: 750px) {
+            grid-template-columns: 330px 330px;
+            margin-left: 5%;
+        }
+    }
+}
+.active {
+    color: $hover-color;
+}
+.all_categories_btn {
+    position: relative;
+    z-index: 1;
+    width: 250px;
+    padding: 14px 0;
+    border: solid;
+    border-radius: 5px;
+    border-width: medium;
+    border-color: $red;
+    background: $white;
+    color: $red;
+    cursor: pointer;
+    font-family: $font-alegreya;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: $transition;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    &:hover {
+        background: $red;
+    }
+    @media (max-width:750px){
+        margin-left:30px;
+    }
+}
+.title {
+    color: $dark-gray;
+    font-family: $font-inter;
+    font-size: 24px;
+    font-style: bold;
+    font-weight: 900;
+    letter-spacing: 0px;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: $transition;
+    margin-bottom: 10px;
+    margin-left: 5%;
+}
+.subtitle {
+    color: $dark-gray;
+    font-family: $font-inter;
+    font-size: 28px;
+    font-style: light;
+    font-weight: 900;
+    letter-spacing: 0px;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: $transition;
+    margin-bottom: 10px;
+}
+.brands {
+    margin-top:30px;
+    &Title {
+        color: $dark-gray;
+        font-style: bold;
+    }
+    &Grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+    @media (max-width: 750px) {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+.ideas {
+    &BG {
+        padding:15px;
+        background-color: $dark-gray;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    &Title {
+        color: $white;
+        margin-top: 15px;
+    }
+    &Grid {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        @media (max-width: 750px){
+            grid-template-columns: 350px 350px;
+        }
+    }
+    &Wide {
+        padding: 10px;
+        &Image {
+            aspect-ratio: 690/400;
+        }
+    }
+    &Narrow {
+        padding: 10px;
+        &Image {
+            aspect-ratio: 330/400;
+        }
+    }
+}
+.description{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: block;
+    word-wrap: break-word;
+    width: 570px;
+    &Grid {
+        padding: 30px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    &Image {
+        aspect-ratio: 1023 / 612;
+    }
+    @media (max-width: 750px) {
+        margin-left: 5%
+    }
+}
+.horizImgSep {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.news {
+    &Grid {
+        display: grid;
+        margin-bottom: 15px;
+        grid-template-columns: repeat(4, 1fr);
+        @media (max-width: 750px) {
+            grid-template-columns: 1fr 1fr;
+            margin-left: 5%;
+        }
+    }
+}

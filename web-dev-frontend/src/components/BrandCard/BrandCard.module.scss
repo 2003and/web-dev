@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'mixins';
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 0px;
+    max-width: 282px;
+
+    &:hover {
+        .cardDescName {
+            color: $hover-color;
+        }
+    }
+
+    &Image {
+        position: relative;
+        aspect-ratio: 282 / 170;
+    }
+}

@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'mixins';
+
+.card {
+    display: flex;
+    border-radius: 5px;
+    &Image {
+        //max-width: 690px;
+        aspect-ratio: 2.46;
+        &:hover{
+            box-shadow: $box-shadow-hover;
+        }
+    }
+}

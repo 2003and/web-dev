@@ -1,0 +1,76 @@
+@import 'variables';
+@import 'mixins';
+
+.footer {
+    position: relative;
+    padding: 32px 0 36px;
+    background: $dark-gray;
+    margin-top: auto;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    position: relative;
+    width: 112px;
+    height: 52px;
+}
+
+.phone {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+
+    &>a {
+        margin-bottom: 6px;
+        @include h4-title;
+        color: $white-color;
+        transition: $transition;
+
+        &:hover {
+            color: $hover-color;
+        }
+    }
+
+    &>span {
+        @include desc-text;
+        color: $white-color;
+    }
+}
+.list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px 60px;
+    max-width: 20%;
+    margin: 100px 0px 0px 15%;
+    color: $gray;
+    font-family: $font-inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    &Title {
+        color: $white;
+        font-size:16px;
+    }
+    @media (max-width: 750px){
+        margin: 5% 0 0 5%;
+    }
+}
+.confidencial {
+    margin-left: auto;
+    color: $white-color;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    transition: $transition;
+
+    &:hover {
+        color: $hover-color;
+    }
+}

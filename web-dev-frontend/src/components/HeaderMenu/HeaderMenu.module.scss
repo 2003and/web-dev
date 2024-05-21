@@ -1,0 +1,104 @@
+@import 'variables';
+
+.nav {
+    overflow: auto;
+
+    &List {
+        display: flex;
+        padding-top:15px;
+        gap: 10px 10px;
+        grid-template-columns: repeat(4, 1fr);
+
+        &Item {
+            margin: 0 30px;
+
+            &>a {
+                color: $white;
+                font-family: $font-inter;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 900;
+                letter-spacing: 1px;
+                line-height: normal;
+                text-transform: uppercase;
+                transition: $transition;
+
+                &:hover {
+                    color: $hover-color;
+                }
+            }
+        }
+    }
+}
+
+.text {
+    color: $gray;
+    font-family: $font-inter;
+    padding: 10px 10px;
+    font-size: 10px;
+    font-style: light;
+    font-weight: 900;
+    letter-spacing: 1.333px;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: $transition;
+    &:dark {
+        color: $dark-gray;
+    }
+    &:hover {
+        color: $red;
+    }
+    &>a {
+        color: $white
+    }
+    @media(max-width: 750px) {
+        display:none;
+    }
+}
+.order_call {
+    display: flex;
+    color: $gray;
+    font-family: $font-inter;
+    padding: 10px 10px;
+    font-size: 10px;
+    font-style: light;
+    font-weight: 900;
+    letter-spacing: 1.333px;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: $transition;
+    &:dark {
+        color: $dark-gray;
+    }
+    &:hover {
+        color: $red;
+    }
+    &>a {
+        padding: 10px 20px;
+        color: $red
+    }
+}
+.btn {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: $gray;
+    color: $white;
+    cursor: pointer;
+    font-family: $font-inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: normal;
+    outline: none;
+    text-transform: uppercase;
+    transition: $transition;
+    
+    &:hover {
+        background: $red;
+    }
+}

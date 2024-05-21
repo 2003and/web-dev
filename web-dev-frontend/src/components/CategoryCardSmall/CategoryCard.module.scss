@@ -1,0 +1,77 @@
+@import 'variables';
+@import 'mixins';
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    max-width: 100%;
+    margin-bottom: 15px;
+    &Image {
+        position: relative;
+        aspect-ratio: 1.65 / 1;
+        &:hover {
+            box-shadow: $box-shadow-hover;
+            .cardDescName {
+                color: $hover-color;
+            }
+        }
+    }
+
+    &Desc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        &Name {
+            @include h4-title;
+            margin-bottom: 6px;
+            text-align: center;
+            transition: $transition;
+        }
+
+        &Text {
+            @include desc-text;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        &Price {
+            margin-bottom: 12px;
+            color: $black-color;
+            font-family: $font-roboto;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        &BuyBtn {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 14px 0;
+            border: none;
+            border-radius: 5px;
+            background: $hover-color;
+            color: $white-color;
+            cursor: pointer;
+            font-family: $font-alegreya;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 900;
+            letter-spacing: 1px;
+            line-height: normal;
+            outline: none;
+            text-transform: uppercase;
+            transition: $transition;
+            
+            &:hover {
+                background: $active-color;
+            }
+        }
+
+    }
+}
