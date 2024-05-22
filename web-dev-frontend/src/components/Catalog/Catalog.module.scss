@@ -2,6 +2,7 @@
 @import 'mixins';
 
 .catalog {
+    display: block;
     &Title {
         @include h2-title;
 

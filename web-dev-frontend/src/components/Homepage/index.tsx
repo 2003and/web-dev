@@ -16,6 +16,7 @@ import BrandCard from '../BrandCard';
 import NewsCard from '../NewsCard';
 import ReactQueryProvider from '@/providers/react-query';
 import { useNewsQuery } from '@/hooks/useNewsQuery';
+import Catalog from '../Catalog';
 
 export default function Homepage() {
     const [state, setState] = useState(0);
@@ -81,12 +82,7 @@ export default function Homepage() {
 
             <section className={styles.catalog}>
                 <h2 className={styles.title}>Продукты</h2>
-                <div className={styles.catalogGrid}>
-                    <CatalogCard/>
-                    <CatalogCard/>
-                    <CatalogCard/>
-                    <CatalogCard/>
-                </div>
+                <Catalog />
             </section>
             </div>
             <section className={styles.ideasBG}>
