@@ -20,14 +20,14 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 
 @ApiTags('category')
 @Controller('category')
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
   @Post()
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', { storage: fileStorage }))
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   create(
     @Body() dto: CreateCategoryDto,
     @UploadedFile() image: Express.Multer.File,
@@ -46,6 +46,8 @@ export class CategoryController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   update(
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
@@ -55,6 +57,8 @@ export class CategoryController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string) {
     return this.categoryService.delete(+id);
   }

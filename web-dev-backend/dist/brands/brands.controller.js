@@ -20,6 +20,8 @@ const brands_service_1 = require("./brands.service");
 const storage_1 = require("./storage");
 const create_brand_dto_1 = require("./dto/create-brand.dto");
 const update_brand_dto_1 = require("./dto/update-brand.dto");
+const swagger_2 = require("@nestjs/swagger");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let BrandController = class BrandController {
     constructor(brandService) {
         this.brandService = brandService;
@@ -48,6 +50,8 @@ __decorate([
     (0, common_1.Post)(),
     (0, swagger_1.ApiConsumes)('multipart/form-data'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_1.fileStorage })),
+    (0, swagger_2.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
@@ -79,6 +83,8 @@ __decorate([
     (0, common_1.Patch)(':id'),
     (0, swagger_1.ApiConsumes)('multipart/form-data'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_1.fileStorage })),
+    (0, swagger_2.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __param(2, (0, common_1.UploadedFile)()),
@@ -88,13 +94,15 @@ __decorate([
 ], BrandController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, swagger_2.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], BrandController.prototype, "remove", null);
 exports.BrandController = BrandController = __decorate([
-    (0, swagger_1.ApiTags)('brand'),
+    (0, swagger_2.ApiTags)('brand'),
     (0, common_1.Controller)('brand'),
     __metadata("design:paramtypes", [brands_service_1.BrandService])
 ], BrandController);

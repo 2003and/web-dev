@@ -34,7 +34,6 @@ let CartController = class CartController {
     }
     create(dto, req) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("**", req.id);
             return this.cartService.create(dto, req.id);
         });
     }

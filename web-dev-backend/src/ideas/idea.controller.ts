@@ -9,8 +9,9 @@ import {
   UseInterceptors,
   UploadedFile,
   Response,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiConsumes } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiConsumes } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import { IdeaService } from './idea.service';
@@ -19,6 +20,7 @@ import { CreateIdeaDto } from './dto/create-idea.dto';
 import { UpdateIdeaDto } from './dto/update-idea.dto';
 import { IdeaEntity } from './entities/idea.entity';
 import { DeleteResult } from 'typeorm';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 
 @ApiTags('idea')
 @Controller('idea')
@@ -28,6 +30,8 @@ export class IdeaController {
   @Post()
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', { storage: fileStorage }))
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   create(
     @Body() dto: CreateIdeaDto,
     @UploadedFile() image: Express.Multer.File,
@@ -53,6 +57,8 @@ export class IdeaController {
   @Patch(':id')
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', { storage: fileStorage }))
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   update(
     @Param('id') id: string,
     @Body() dto: UpdateIdeaDto,
@@ -62,6 +68,8 @@ export class IdeaController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string): Promise<DeleteResult> {
     return this.ideaService.delete(+id);
   }

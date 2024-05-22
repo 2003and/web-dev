@@ -20,6 +20,7 @@ const idea_service_1 = require("./idea.service");
 const storage_1 = require("./storage");
 const create_idea_dto_1 = require("./dto/create-idea.dto");
 const update_idea_dto_1 = require("./dto/update-idea.dto");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let IdeaController = class IdeaController {
     constructor(ideaService) {
         this.ideaService = ideaService;
@@ -48,6 +49,8 @@ __decorate([
     (0, common_1.Post)(),
     (0, swagger_1.ApiConsumes)('multipart/form-data'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_1.fileStorage })),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
@@ -79,6 +82,8 @@ __decorate([
     (0, common_1.Patch)(':id'),
     (0, swagger_1.ApiConsumes)('multipart/form-data'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_1.fileStorage })),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __param(2, (0, common_1.UploadedFile)()),
@@ -88,6 +93,8 @@ __decorate([
 ], IdeaController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

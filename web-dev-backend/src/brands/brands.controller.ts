@@ -7,10 +7,11 @@ import {
   Param,
   Delete,
   UseInterceptors,
+  UseGuards,
   UploadedFile,
   Response,
 } from '@nestjs/common';
-import { ApiTags, ApiConsumes } from '@nestjs/swagger';
+import { ApiConsumes } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import { BrandService } from './brands.service';
@@ -19,6 +20,8 @@ import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
 import { BrandEntity } from './entities/brand.entity';
 import { DeleteResult } from 'typeorm';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 
 @ApiTags('brand')
 @Controller('brand')
@@ -28,6 +31,8 @@ export class BrandController {
   @Post()
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', { storage: fileStorage }))
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   create(
     @Body() dto: CreateBrandDto,
     @UploadedFile() image: Express.Multer.File,
@@ -53,6 +58,8 @@ export class BrandController {
   @Patch(':id')
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', { storage: fileStorage }))
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   update(
     @Param('id') id: string,
     @Body() dto: UpdateBrandDto,
@@ -62,6 +69,8 @@ export class BrandController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string): Promise<DeleteResult> {
     return this.brandService.delete(+id);
   }

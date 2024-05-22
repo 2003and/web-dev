@@ -22,7 +22,6 @@ export class CartController {
 
   @Post()
   async create(@Body() dto: CreateCartDto, @Req() req: any) {
-console.log("**", req.id);
     return this.cartService.create(dto, req.id);
   }
 
